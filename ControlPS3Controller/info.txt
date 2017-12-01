@@ -8,4 +8,4 @@ UP
 DOWN
 LEFT
 RIGHT
-
+10

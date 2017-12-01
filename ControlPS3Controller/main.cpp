@@ -148,31 +148,37 @@ inline void processPS3Input(JOYINFOEX joyinfoex, int* buttons)
 		// keybd_event('A', 0, 0, 0);
 		// keybd_event('A', 0, KEYEVENTF_KEYUP, 0);
 		keybd_event(buttons[X_INDEX], 0, 0, 0);
+		Sleep(interval);
 		keybd_event(buttons[X_INDEX], 0, KEYEVENTF_KEYUP, 0);
 		break;
 
 	case CIRCLE_BUTTON:
 		keybd_event(buttons[CIRCLE_INDEX], 0, 0, 0);
-		keybd_event(buttons[CIRCLE_INDEX], 0, KEYEVENTF_KEYUP, 0);
+		Sleep(interval);
+		 keybd_event(buttons[CIRCLE_INDEX], 0, KEYEVENTF_KEYUP, 0);
 		break;
 
 	case SQUARE_BUTTON:
 		keybd_event(buttons[SQUARE_INDEX], 0, 0, 0);
+		Sleep(interval);
 		keybd_event(buttons[SQUARE_INDEX], 0, KEYEVENTF_KEYUP, 0);
 		break;
 
 	case TRIANGLE_BUTTON:
 		keybd_event(buttons[TRIANGLE_INDEX], 0, 0, 0);
-		keybd_event(buttons[TRIANGLE_INDEX], 0, KEYEVENTF_KEYUP, 0);
+		Sleep(interval);
+		 keybd_event(buttons[TRIANGLE_INDEX], 0, KEYEVENTF_KEYUP, 0);
 		break;
 
 	case L1_BUTTON:
 		keybd_event(buttons[L1_INDEX], 0, 0, 0);
+		Sleep(interval);
 		keybd_event(buttons[L1_INDEX], 0, KEYEVENTF_KEYUP, 0);
 		break;
 
 	case R1_BUTTON:
 		keybd_event(buttons[R1_INDEX], 0, 0, 0);
+		Sleep(interval);
 		keybd_event(buttons[R1_INDEX], 0, KEYEVENTF_KEYUP, 0);
 		break;
 	}
@@ -183,22 +189,26 @@ inline void processPS3Input(JOYINFOEX joyinfoex, int* buttons)
 	if (x < -THETA)
 	{
 		keybd_event(buttons[LEFT_INDEX], 0, 0, 0);
+		Sleep(interval);
 		keybd_event(buttons[LEFT_INDEX], 0, KEYEVENTF_KEYUP, 0);
 	}
 	else if (x > THETA)
 	{
 		keybd_event(buttons[RIGHT_INDEX], 0, 0, 0);
+		Sleep(interval);
 		keybd_event(buttons[RIGHT_INDEX], 0, KEYEVENTF_KEYUP, 0);
 	}
 
 	if (y < -THETA)
 	{
 		keybd_event(buttons[UP_INDEX], 0, 0, 0);
+		Sleep(interval);
 		keybd_event(buttons[UP_INDEX], 0, KEYEVENTF_KEYUP, 0);
 	}
 	else if (y > THETA)
 	{
 		keybd_event(buttons[DOWN_INDEX], 0, 0, 0);
+		Sleep(interval);
 		keybd_event(buttons[DOWN_INDEX], 0, KEYEVENTF_KEYUP, 0);
 	}
 }
@@ -228,7 +238,7 @@ int main(int argc, char* argv[])
 
 	while (true)
 	{
-		Sleep(interval);
+		// Sleep(interval);
 		unsigned int num_dev = joyGetNumDevs();
 
 		if (0 == num_dev)
