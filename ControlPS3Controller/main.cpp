@@ -24,6 +24,8 @@ const int THETA = 10000;
 enum { X_BUTTON = 1, CIRCLE_BUTTON = 2, SQUARE_BUTTON = 4, TRIANGLE_BUTTON = 8, L1_BUTTON = 16, R1_BUTTON = 32 };
 enum { X_INDEX = 0, CIRCLE_INDEX, SQUARE_INDEX, TRIANGLE_INDEX, L1_INDEX, R1_INDEX, UP_INDEX, DOWN_INDEX, LEFT_INDEX, RIGHT_INDEX };
 
+int interval;
+
 int mapping(string key)
 {
 	if (key.size() == 1)
@@ -69,6 +71,7 @@ bool inputButton(int* buttons)
 	cout << " ALT Key = ALT" << endl;
 	cout << " SPACE BAR Key = SPACE" << endl;
 	cout << " ENTER Key = ENTER" << endl;
+	
 	cout << endl;
 
 	cout << "X Button Key: ";
@@ -111,6 +114,9 @@ bool inputButton(int* buttons)
 	cin >> input;
 	buttons[RIGHT_INDEX] = mapping(input);
 
+	cout << "Interval Time(ms): ";
+	cin >> interval;
+
 	return true;
 }
 
@@ -122,35 +128,12 @@ bool inputButton(int* buttons, char* file_name)
 	if (!is)
 		return false;
 
-	is >> input;
-	buttons[X_INDEX] = mapping(input);
-
-	is >> input;
-	buttons[CIRCLE_INDEX] = mapping(input);
-
-	is >> input;
-	buttons[SQUARE_INDEX] = mapping(input);
-
-	is >> input;
-	buttons[TRIANGLE_INDEX] = mapping(input);
-
-	is >> input;
-	buttons[L1_INDEX] = mapping(input);
-
-	is >> input;
-	buttons[R1_INDEX] = mapping(input);
-
-	is >> input;
-	buttons[UP_INDEX] = mapping(input);
-
-	is >> input;
-	buttons[DOWN_INDEX] = mapping(input);
-
-	is >> input;
-	buttons[LEFT_INDEX] = mapping(input);
-
-	is >> input;
-	buttons[RIGHT_INDEX] = mapping(input);
+	for (int i = X_INDEX; i <= RIGHT_INDEX; ++i)
+	{
+		is >> input;
+		buttons[i] = mapping(input);
+	}
+	is >> interval;
 
 	is.close();
 
@@ -245,7 +228,7 @@ int main(int argc, char* argv[])
 
 	while (true)
 	{
-		Sleep(10);
+		Sleep(50);
 		unsigned int num_dev = joyGetNumDevs();
 
 		if (0 == num_dev)
