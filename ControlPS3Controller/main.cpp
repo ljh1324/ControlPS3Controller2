@@ -228,7 +228,7 @@ int main(int argc, char* argv[])
 
 	while (true)
 	{
-		Sleep(50);
+		Sleep(interval);
 		unsigned int num_dev = joyGetNumDevs();
 
 		if (0 == num_dev)
